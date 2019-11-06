@@ -1,6 +1,6 @@
 Name:           m4
 Version:        1.4.18
-Release:        11
+Release:        12
 Summary:        A GNU implementation of macro processor
 License:        GPLv3+
 URL:            https://www.gnu.org/software/m4/
@@ -41,8 +41,8 @@ rm -rf %{buildroot}%{_infodir}/dir
 make check
 
 %files
-%doc AUTHORS README ChangeLog
-%license COPYING
+%doc README ChangeLog
+%license COPYING AUTHORS
 %{_bindir}/m4
 
 %files help
@@ -51,8 +51,13 @@ make check
 %{_mandir}/man1/m4*
 %{_infodir}/m4*
 
-
 %changelog
+* Mon Oct 21 2019 shenyangyang <shenyangyang4@huawei.com> - 1.4.18-12
+- Type:NA
+- ID:NA
+- SUG:NA
+- DESC:move AUTHORS to license directory
+
 * Sun Sep 29 2019 shenyangyang <shenyangyang4@huawei.com> - 1.4.18-11
 - Type:NA
 - ID:NA
@@ -61,4 +66,3 @@ make check
 
 * Thu Aug 29 2019 openEuler Buildteam <buildteam@openeuler.org> - 1.4.18-10
 - Package Init
-
