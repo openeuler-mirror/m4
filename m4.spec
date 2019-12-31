@@ -1,11 +1,10 @@
 Name:           m4
 Version:        1.4.18
-Release:        12
+Release:        13
 Summary:        A GNU implementation of macro processor
 License:        GPLv3+
 URL:            https://www.gnu.org/software/m4/
 Source0:        https://ftp.gnu.org/gnu/m4/%{name}-%{version}.tar.xz
-Source1:        https://ftp.gnu.org/gnu/m4/%{name}-%{version}.tar.xz.sig
 Patch0:         m4-1.4.18-glibc-change-work-around.patch
 
 BuildRequires:  gcc autoconf automake
@@ -52,6 +51,12 @@ make check
 %{_infodir}/m4*
 
 %changelog
+* Mon Dec 31 2019 openEuler Buildteam <buildteam@openeuler.org> - 1.4.18-13
+- Type:NA
+- ID:NA
+- SUG:NA
+- DESC:delete unneeded source
+
 * Mon Oct 21 2019 shenyangyang <shenyangyang4@huawei.com> - 1.4.18-12
 - Type:NA
 - ID:NA
