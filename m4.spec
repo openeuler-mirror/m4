@@ -1,6 +1,6 @@
 Name:           m4
 Version:        1.4.18
-Release:        14
+Release:        15
 Summary:        A GNU implementation of macro processor
 License:        GPLv3+
 URL:            https://www.gnu.org/software/m4/
@@ -54,13 +54,19 @@ make check
 %{_infodir}/m4*
 
 %changelog
+* Wed Aug 04 2021 shixuantong <shixuantong@huawei.com> - 1.4.18-15
+- Type:bugfix
+- ID:NA
+- SUG:NA
+- DESC:fix changelog error
+
 * Fri Mar 19 2021 shixuantong <shixuantong@huawei.com> - 1.4.18-14
 - Type:bugfix
 - ID:NA
 - SUG:NA
 - DESC:fix test_localeconv fail in aarch64 machine
 
-* Mon Dec 31 2019 openEuler Buildteam <buildteam@openeuler.org> - 1.4.18-13
+* Tue Dec 31 2019 openEuler Buildteam <buildteam@openeuler.org> - 1.4.18-13
 - Type:NA
 - ID:NA
 - SUG:NA
