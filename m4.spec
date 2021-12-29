@@ -1,6 +1,6 @@
 Name:           m4
 Version:        1.4.18
-Release:        15
+Release:        16
 Summary:        A GNU implementation of macro processor
 License:        GPLv3+
 URL:            https://www.gnu.org/software/m4/
@@ -28,6 +28,9 @@ This package provides help document for m4.
 %autosetup -p1
 
 %build
+%ifarch aarch64
+CFLAGS="$RPM_OPT_FLAGS -fsigned-char"
+%endif
 autoreconf -ivf
 %configure
 %make_build
@@ -37,9 +40,6 @@ autoreconf -ivf
 rm -rf %{buildroot}%{_infodir}/dir
 
 %check
-%ifarch aarch64
-CFLAGS="$RPM_OPT_FLAGS -fsigned-char"
-%endif
 make check
 
 %files
@@ -54,6 +54,12 @@ make check
 %{_infodir}/m4*
 
 %changelog
+* Wed Dec 29 2021 shixuantong <shixuantong@huawei.com> - 1.4.18-16
+- Type:bugfix
+- ID:NA
+- SUG:NA
+- DESC:move -fsigned-char to %build
+
 * Tue Dec 21 2021 shixuantong <shixuantong@huawei.com> - 1.4.18-15
 - Type:bugfix
 - ID:NA
