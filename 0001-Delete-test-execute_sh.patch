@@ -1,0 +1,83 @@
+diff --git a/m4/gnulib-comp.m4 b/m4/gnulib-comp.m4
+index fccda9a..1675e54 100644
+--- a/m4/gnulib-comp.m4
++++ b/m4/gnulib-comp.m4
+@@ -2983,7 +2983,6 @@ AC_DEFUN([M4_FILE_LIST], [
+   tests/test-execute-child.c
+   tests/test-execute-main.c
+   tests/test-execute-script.c
+-  tests/test-execute.sh
+   tests/test-explicit_bzero.c
+   tests/test-fchdir.c
+   tests/test-fclose.c
+diff --git a/tests/Makefile.in b/tests/Makefile.in
+index 64ce81c..ae1bfe3 100644
+--- a/tests/Makefile.in
++++ b/tests/Makefile.in
+@@ -126,7 +126,6 @@ TESTS = test-accept$(EXEEXT) test-access$(EXEEXT) \
+ 	test-ctype$(EXEEXT) $(am__EXEEXT_3) test-dirent$(EXEEXT) \
+ 	test-dirname$(EXEEXT) test-dup$(EXEEXT) test-dup2$(EXEEXT) \
+ 	test-dynarray$(EXEEXT) test-environ$(EXEEXT) $(am__EXEEXT_4) \
+-	test-errno$(EXEEXT) test-execute.sh \
+ 	test-execute-script$(EXEEXT) test-explicit_bzero$(EXEEXT) \
+ 	test-fchdir$(EXEEXT) test-fclose$(EXEEXT) $(am__EXEEXT_5) \
+ 	test-fcntl-h$(EXEEXT) test-fcntl$(EXEEXT) test-fdopen$(EXEEXT) \
+@@ -4388,7 +4387,6 @@ EXTRA_DIST = accept.c w32sock.h test-accept.c signature.h macros.h \
+ 	test-dup.c signature.h macros.h test-dup2.c signature.h \
+ 	macros.h test-dynarray.c macros.h test-environ.c \
+ 	test-errno-c++.cc test-errno-c++2.cc test-errno.c \
+-	test-execute.sh test-execute-main.c test-execute-child.c \
+ 	test-execute-script.c executable-script executable-script.sh \
+ 	executable-shell-script macros.h explicit_bzero.c \
+ 	test-explicit_bzero.c signature.h macros.h test-fchdir.c \
+@@ -6970,13 +6968,6 @@ test-errno.log: test-errno$(EXEEXT)
+ 	--log-file $$b.log --trs-file $$b.trs \
+ 	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+ 	"$$tst" $(AM_TESTS_FD_REDIRECT)
+-test-execute.sh.log: test-execute.sh
+-	@p='test-execute.sh'; \
+-	b='test-execute.sh'; \
+-	$(am__check_pre) $(LOG_DRIVER) --test-name "$$f" \
+-	--log-file $$b.log --trs-file $$b.trs \
+-	$(am__common_driver_flags) $(AM_LOG_DRIVER_FLAGS) $(LOG_DRIVER_FLAGS) -- $(LOG_COMPILE) \
+-	"$$tst" $(AM_TESTS_FD_REDIRECT)
+ test-execute-script.log: test-execute-script$(EXEEXT)
+ 	@p='test-execute-script$(EXEEXT)'; \
+ 	b='test-execute-script'; \
+diff --git a/tests/gnulib.mk b/tests/gnulib.mk
+index 2c99ba9..0f8044e 100644
+--- a/tests/gnulib.mk
++++ b/tests/gnulib.mk
+@@ -519,7 +519,6 @@ EXTRA_DIST += test-errno.c
+ 
+ ## begin gnulib module execute-tests
+ 
+-TESTS += test-execute.sh
+ check_PROGRAMS += test-execute-main test-execute-child
+ test_execute_main_LDADD = $(LDADD) @LIBINTL@ $(LIBTHREAD)
+ # The test-execute-child program must be a real executable, not a libtool
+@@ -531,7 +530,6 @@ TESTS += test-execute-script
+ check_PROGRAMS += test-execute-script
+ test_execute_script_LDADD = $(LDADD) @LIBINTL@ $(LIBTHREAD)
+ test_execute_script_CPPFLAGS = $(AM_CPPFLAGS) -DSRCDIR=\"$(srcdir)/\"
+-EXTRA_DIST += test-execute.sh test-execute-main.c test-execute-child.c test-execute-script.c executable-script executable-script.sh executable-shell-script macros.h
+ 
+ ## end   gnulib module execute-tests
+ 
+diff --git a/tests/test-execute.sh b/tests/test-execute.sh
+deleted file mode 100755
+index 15c8b47..0000000
+--- a/tests/test-execute.sh
++++ /dev/null
+@@ -1,8 +0,0 @@
+-#!/bin/sh
+-
+-st=0
+-for i in 0 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 ; do
+-  ${CHECKER} ./test-execute-main${EXEEXT} ./test-execute-child${EXEEXT} $i \
+-    || { echo test-execute.sh: test case $i failed >&2; st=1; }
+-done
+-exit $st
+-- 
+1.8.3.1
+
