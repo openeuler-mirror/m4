@@ -1,14 +1,13 @@
 Name:           m4
-Version:        1.4.18
-Release:        17
+Version:        1.4.19
+Release:        1
 Summary:        A GNU implementation of macro processor
 License:        GPLv3+
 URL:            https://www.gnu.org/software/m4/
 Source0:        https://ftp.gnu.org/gnu/m4/%{name}-%{version}.tar.xz
-Patch0:         m4-1.4.18-glibc-change-work-around.patch
-Patch6000:      backport-gnulib-c-stack.patch
+Patch1:         0001-Delete-test-execute_sh.patch 
 
-BuildRequires:  gcc autoconf automake
+BuildRequires:  gcc autoconf automake gettext-devel perl
 Provides:       bundled(gnulib)
 
 %description
@@ -47,6 +46,7 @@ make check
 %doc README ChangeLog
 %license COPYING AUTHORS
 %{_bindir}/m4
+%{_infodir}/../locale/*
 
 %files help
 %defattr(-,root,root)
@@ -55,6 +55,9 @@ make check
 %{_infodir}/m4*
 
 %changelog
+* Tue Dec 30 2021 liudabo <liudabo1@huawei.com> - 1.4.19-1
+- DESC:update version to 1.4.19
+
 * Tue Dec 21 2021 shixuantong <shixuantong@huawei.com> - 1.4.18-17
 - Type:bugfix
 - ID:NA
