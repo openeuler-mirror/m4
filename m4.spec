@@ -1,6 +1,6 @@
 Name:           m4
 Version:        1.4.19
-Release:        2
+Release:        3
 Summary:        A GNU implementation of macro processor
 License:        GPLv3+
 URL:            https://www.gnu.org/software/m4/
@@ -55,6 +55,9 @@ make check
 %{_infodir}/m4*
 
 %changelog
+* Tue Oct 25 2022 renhongxun <renhongxun@h-partners.com> - 1.4.19-3
+- Rebuild for next release
+
 * Tue Mar 08 2022 renhongxun <renhongxun@h-partners.com> - 1.4.19-2
 - Type:bugfix
 - ID:NA
