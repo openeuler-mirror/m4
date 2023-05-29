@@ -1,6 +1,6 @@
 Name:           m4
 Version:        1.4.19
-Release:        3
+Release:        4
 Summary:        A GNU implementation of macro processor
 License:        GPLv3+
 URL:            https://www.gnu.org/software/m4/
@@ -28,7 +28,7 @@ This package provides help document for m4.
 %autosetup -p1
 
 %build
-%ifarch aarch64
+%ifarch aarch64 riscv64
 CFLAGS="$RPM_OPT_FLAGS -fsigned-char"
 %endif
 autoreconf -ivf
@@ -55,6 +55,9 @@ make check
 %{_infodir}/m4*
 
 %changelog
+* Tue May 23 2023 yoo <sunyuechi@iscas.ac.cn> - 1.4.19-4
+- add riscv support
+
 * Tue Oct 25 2022 renhongxun <renhongxun@h-partners.com> - 1.4.19-3
 - Rebuild for next release
 
